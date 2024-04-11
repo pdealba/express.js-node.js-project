@@ -10,7 +10,6 @@ router.get("/", (req, res, next) => {
     path: "/",
     pageTitle: "Shop",
   });
-  // console.log("shop.js", adminData.products);
 });
 
 module.exports = router;

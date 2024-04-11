@@ -19,5 +19,3 @@ router.post("/add-product", (req, res) => {
 
 exports.routers = router;
 exports.products = products;
-
-// module.exports = router;
