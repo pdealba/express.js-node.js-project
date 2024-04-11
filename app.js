@@ -5,6 +5,10 @@ const bodyParser = require("body-parser");
 
 const path = require("path");
 
+app.engine("pug", require("pug").__express);
+app.set("view engine", "pug");
+app.set("views", "views");
+
 const adminData = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
 
