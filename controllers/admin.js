@@ -8,11 +8,15 @@ exports.getAddProduct = (req, res) => {
 };
 
 exports.postAddProduct = (req, res) => {
-  product = new Product(req.body.title);
+  const r = req.body;
+  product = new Product(r.title, r.description, r.price, r.imageURL);
   product.save();
   res.redirect("/");
 };
 
 exports.getAdminProducts = (req, res) => {
-  res.render("admin/products", { path: "/admin/products", pageTitle: "Admin Products" });
+  res.render("admin/products", {
+    path: "/admin/products",
+    pageTitle: "Admin Products",
+  });
 };
