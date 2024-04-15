@@ -11,6 +11,7 @@
         </div>
         <h2><%= product.price %></h2>
         <p><%= product.description %></p>
+        <!--Clicking this button from the product-detail page results in an error: 'pageTitle: product.title,' TypeError: Cannot read properties of undefined (reading 'title')-->
         <%- include('../includes/add-to-cart.ejs') %>
     </main>
 
