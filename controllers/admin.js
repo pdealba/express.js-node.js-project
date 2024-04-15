@@ -9,7 +9,7 @@ exports.getAddProduct = (req, res) => {
 
 exports.postAddProduct = (req, res) => {
   const r = req.body;
-  product = new Product(r.title, r.description, r.price, r.imageUrl);
+  product = new Product(null, r.title, r.description, r.price, r.imageUrl);
   product.save();
   res.redirect("/");
 };
@@ -25,6 +25,19 @@ exports.getEditProduct = (req, res) => {
       path: "/admin/edit-product",
     });
   });
+};
+
+exports.postEditProduct = (req, res) => {
+  const r = req.body;
+  editedProduct = new Product(
+    r.id,
+    r.title,
+    r.description,
+    r.price,
+    r.imageUrl
+  );
+  editedProduct.save();
+  res.redirect("/admin/products");
 };
 
 exports.getAdminProducts = (req, res) => {
