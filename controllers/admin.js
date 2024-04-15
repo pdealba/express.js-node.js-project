@@ -14,9 +14,25 @@ exports.postAddProduct = (req, res) => {
   res.redirect("/");
 };
 
+exports.getEditProduct = (req, res) => {
+  Product.getById(req.params.productId, (product) => {
+    if (!product) {
+      return res.redirect("/");
+    }
+    res.render("admin/edit-product", {
+      product: product,
+      pageTitle: "Edit: " + product.title,
+      path: "/admin/edit-product",
+    });
+  });
+};
+
 exports.getAdminProducts = (req, res) => {
-  res.render("admin/products", {
-    path: "/admin/products",
-    pageTitle: "Admin Products",
+  Product.fetchAll((products) => {
+    res.render("admin/products", {
+      prods: products,
+      path: "/admin/products",
+      pageTitle: "Admin Products",
+    });
   });
 };
