@@ -50,7 +50,7 @@ exports.getCart = (req, res) => {
 };
 
 exports.postCart = (req, res) => {
-  const productId = req.body.prodId;
+  const productId = req.body.productId;
   Product.getById(productId, (product) => {
     Cart.addProduct(productId, product.price);
   });
