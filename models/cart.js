@@ -25,7 +25,6 @@ module.exports = class Cart {
     });
   }
 
-  
   static deleteProduct(id, productPrice) {
     fs.readFile(p + "/data/cart.json", (err, fileContent) => {
       if (!err) {
@@ -37,8 +36,10 @@ module.exports = class Cart {
         fs.writeFile(p + "/data/cart.json", JSON.stringify(newCart), (err) =>
           console.log(err)
         );
+      }
+    });
+  }
 
-        
   static getCart(cb) {
     fs.readFile(p + "/data/cart.json", (err, fileContent) => {
       if (!err) {
