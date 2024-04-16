@@ -6,7 +6,11 @@ const productsController = require("../controllers/shop");
 
 router.get("/cart", productsController.getCart);
 
+router.post("/cart", productsController.postCart);
+
 router.get("/products", productsController.getProducts);
+
+router.get("/product/:productId", productsController.getProduct);
 
 router.get("/orders", productsController.getOrders);
 
