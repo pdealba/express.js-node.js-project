@@ -30,8 +30,14 @@ module.exports = class Cart {
       if (!err) {
         const cart = JSON.parse(fileContent);
         const filteredproducts = cart.products.filter((p) => p.id !== id);
+        if (!filteredproducts) {
+          return; // The item is not in the cart so we dont delete it
+        }
         const newTotalPrice = (cart.totalPrice -= productPrice);
-        const newCart = { ...filteredproducts, totalPrice: newTotalPrice };
+        const newCart = {
+          products: [...filteredproducts],
+          totalPrice: newTotalPrice,
+        };
 
         fs.writeFile(p + "/data/cart.json", JSON.stringify(newCart), (err) =>
           console.log(err)
